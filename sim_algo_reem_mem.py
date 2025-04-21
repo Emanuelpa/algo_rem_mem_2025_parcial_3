@@ -12,6 +12,26 @@ segmentos =[ ('.text', 0x00, 0x1A),
 
 def procesar(segmentos, reqs, marcos_libres):
     retorno = []
+
+    if not isinstance(segmentos, list) or not all(isinstance(s, tuple) and len(s) == 3 for s in segmentos):
+        raise ValueError("Segmentos debe ser una lista de tuplas (nombre, base, limite)")
+
+    if not isinstance(reqs, list) or not all(isinstance(r, int) and r >= 0 for r in reqs):
+        raise ValueError("Reqs debe ser una lista de enteros no negativos")
+
+    if not isinstance(marcos_libres, list) or not all(isinstance(m, int) and m >= 0 for m in marcos_libres):
+        raise ValueError("Marcos libres debe ser una lista de enteros no negativos")
+
+    if len(set(marcos_libres)) != len(marcos_libres):
+        raise ValueError("Los marcos libres no deben estar repetidos")
+
+    if not segmentos:
+        raise ValueError("Debe haber al menos un segmento definido")
+
+    if not reqs:
+        return retorno
+
+
     tabla_paginas = {}
     cola = deque(maxlen=3)
 
@@ -32,6 +52,8 @@ def procesar(segmentos, reqs, marcos_libres):
         relativa_pag = relativa_segm % 16
         
         pagina_asignar = (nombre, pagina)
+        #print("---------------------------------------------------------")
+        #print("va a asignar", pagina_asignar)
         if pagina_asignar in tabla_paginas.values():
             marco = None
             for marco_, pagina_ in tabla_paginas.items():
@@ -54,6 +76,8 @@ def procesar(segmentos, reqs, marcos_libres):
                 tabla_paginas[marco_reemplazo] = pagina_asignar
                 dir_fisica = marco_reemplazo * 16 + relativa_pag
                 retorno.append((req, dir_fisica, "Marco asignado"))
+        #print(f"req{hex(req)}, tabla de paginas {tabla_paginas}, cola{cola}")
+        #print("---------------------------------------------------------")
     return retorno
                 
     
