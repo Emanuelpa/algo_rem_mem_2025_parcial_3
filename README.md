@@ -41,12 +41,12 @@ segmentos =[ ('.text', 0x00, 0x1A),
 Se obtiene la siguiente salida:
 
 ```shell
-Req: 0x00 Direccion Fisica: 0x20 Acción: Marco libre asignado
+Req: 0x00 Direccion Fisica: 0x00 Acción: Marco libre asignado
 Req: 0x12 Direccion Fisica: 0x12 Acción: Marco libre asignado
-Req: 0x64 Direccion Fisica: 0x04 Acción: Marco libre asignado
-Req: 0x65 Direccion Fisica: 0x05 Acción: Marco ya estaba asignado
-Req: 0x8d Direccion Fisica: 0x2d Acción: Marco asignado
-Req: 0x8f Direccion Fisica: 0x2f Acción: Marco ya estaba asignado
+Req: 0x64 Direccion Fisica: 0x24 Acción: Marco libre asignado
+Req: 0x65 Direccion Fisica: 0x25 Acción: Marco ya estaba asignado
+Req: 0x8d Direccion Fisica: 0x0d Acción: Marco asignado
+Req: 0x8f Direccion Fisica: 0x0f Acción: Marco ya estaba asignado
 Req: 0x19 Direccion Fisica: 0x19 Acción: Marco ya estaba asignado
 Req: 0x18 Direccion Fisica: 0x18 Acción: Marco ya estaba asignado
 Req: 0xf1 Direccion Fisica: 0x1ff Acción: Segmention Fault
