@@ -65,7 +65,7 @@ def procesar(segmentos, reqs, marcos_libres):
             retorno.append((req, dir_fisica, "Marco ya estaba asignado"))
         else:
             if marcos_libres:
-                marco = marcos_libres.pop()
+                marco = marcos_libres.pop(0)
                 tabla_paginas[marco] = pagina_asignar
                 dir_fisica = marco * 16 + relativa_pag
                 retorno.append((req, dir_fisica, "Marco libre asignado"))
